@@ -7,6 +7,7 @@ public class NewBehaviourScript : MonoBehaviour {
 		// Components for your Player  || Player için gerekli bileşenler
 		// 1- Rigidbody
 		// 2- Box Collider for isGrounded checking || isGrounded kontrolü için box collider
+		// 3- Transform
 		
 
 
