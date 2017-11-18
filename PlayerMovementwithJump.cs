@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
 
-		// Components for your Player  || Player için gerekli bileşenler
-		// 1- Rigidbody
-		// 2- Box Collider for isGrounded checking || isGrounded kontrolü için box collider
-		// 3- Transform
-		
+// Can Yuva
+// github.com/canyuva
 
+public class PlayerMovementwithJump : MonoBehaviour {
 
 	public float movementSpeed = 30.0f;
 	private float Vector3;
@@ -20,28 +17,38 @@ public class NewBehaviourScript : MonoBehaviour {
 	public Transform transform;
 	public bool isGrounded = true;
 	float x, z;
+	public Animator animator;
+	
 	void Start (){
 	
 		rb = GetComponent<Rigidbody>();
 		transform = GetComponent<Transform>();
-	
+		animator = GetComponent<Animator>();
+		
 	}
 	void Update () {
 		
 		if(isGrounded){
 			x = Input.GetAxis ("Horizontal") * Time.deltaTime * movementSpeed;
 			z = Input.GetAxis ("Vertical") * Time.deltaTime * movementSpeed;
+			if(x<0)
+				animator.Play("Left");
+			if(x>0)
+				animator.Play("Right");
+			if(z>0)
+				animator.Play("Run");
+			if(z<0)
+				animator.Play("Run_Back");
+			if(x == 0 && z == 0)
+				animator.Play("Idle");
 		}
-			transform.Translate (x, 0, z);
-
-		 if(Input.GetButtonDown("Jump")){
-			 
-			  
+		transform.Translate (x, 0, z);
+		if(Input.GetButtonDown("Jump")){
 			  if(isGrounded){
-				rb.AddForce(transform.up * thrust);
+				rb.AddForce(transform.up * thrust); 
+				animator.Play("Idle");
 			  }
 		 }
-		 
 	}
 	
 	void OnTriggerEnter(Collider cd){
