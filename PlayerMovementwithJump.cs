@@ -6,24 +6,28 @@ using UnityEngine;
 // Can Yuva
 // github.com/canyuva
 
-// Components for your Player  || Player için gerekli bileşenler
+// Components for your Player  || Player icin gerekli bilesenler
 	// 1- Rigidbody
-	// 2- Box Collider for isGrounded checking || isGrounded kontrolü için box collider
+	// 2- Box Collider for isGrounded checking || isGrounded kontrolu icin box collider
 	// 3- Transform
 	// 4- Animator Controller 
 
 public class PlayerMovementwithJump : MonoBehaviour {
 
+	// Variables || Degiskenler
 	public float movementSpeed = 30.0f;
 	private float Vector3;
 	public float jumpSpeed = 50.0f;
-	public Rigidbody rb;
 	public float thrust = 300.0f;
-	public Collider cd;
-	public Transform transform;
 	public bool isGrounded = true;
 	float x, z;
+	
+	// Component References || Bilesen Referansları
+	public Rigidbody rb;
+	public Collider cd;
+	public Transform transform;
 	public Animator animator;
+	
 	
 	void Start (){
 	
