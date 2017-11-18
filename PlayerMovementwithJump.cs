@@ -6,6 +6,12 @@ using UnityEngine;
 // Can Yuva
 // github.com/canyuva
 
+// Components for your Player  || Player için gerekli bileşenler
+	// 1- Rigidbody
+	// 2- Box Collider for isGrounded checking || isGrounded kontrolü için box collider
+	// 3- Transform
+	// 4- Animator Controller 
+
 public class PlayerMovementwithJump : MonoBehaviour {
 
 	public float movementSpeed = 30.0f;
